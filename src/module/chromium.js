@@ -29,8 +29,7 @@ export const startSession = ({ args = [], headless = 'auto', customConfig = {}, 
     return new Promise(async (resolve, reject) => {
         try {
             var xvfbsession = null
-            var newPath = await chromium.executablePath();
-            var chromePath = customConfig.executablePath || customConfig.chromePath || newPath;
+            var chromePath = customConfig.executablePath || customConfig.chromePath || chromium.path;
 
             if (slugify(process.platform).includes('linux') && headless === false) {
                 notice({
